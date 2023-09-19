@@ -1,8 +1,8 @@
 build:
-	g++ -Wall -std=c++17 -o quiz main.cpp;
+	g++ -Wall -std=c++17 -o main *.cpp;
 
 run:
-	./quiz
+	./main
 
 clean:
-	rm quiz
+	rm main
