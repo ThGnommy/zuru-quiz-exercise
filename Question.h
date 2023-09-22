@@ -9,14 +9,14 @@ class Question
 {
   enum class Type
   {
-    truefalse = 0, // true - false
+    truefalse = 1, // true - false
     multi,         // A - B - C
     open           // search in the input string if it includes a specific word
   };
 
 public:
   int type;
-  string question_text = "";
+  string question_text;
   vector<string> answers;
   int correct_answer;
 };
