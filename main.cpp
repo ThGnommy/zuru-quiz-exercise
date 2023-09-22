@@ -15,12 +15,17 @@ int main()
 
   vector<Question> question_list = *(quiz.questions);
 
-  for (auto q : question_list)
-  {
-    std::cout << q.question_text << " " << q.type << "\n";
-  }
+  std::cout << question_list[0].question_text << std::endl;
+  std::cout << question_list[0].answers.size() << std::endl;
 
-  std::cout << question_list.size() << "\n";
+  // for (auto q : question_list)
+  // {
+  //   std::cout << q.question_text << " " << q.type << std::endl;
+  //   for (auto a : q.answers)
+  //   {
+  //     std::cout << a << std::endl;
+  //   }
+  // }
 
   return 0;
 }

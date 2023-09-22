@@ -15,32 +15,41 @@ void Quiz::CreateQuestions()
     string line;
     while (getline(question_file, line))
     {
-      Question current_question;
+      bool is_question_text = line[0] == 'Q';
+      bool is_answer = line[0] == '[';
 
-      current_question.type = (int)line[0] - '0';
+      // get the question text and the answer number
+      if (is_question_text)
+      {
+        Question current_question;
 
-      // Find the question text
+        current_question.type = (int)line[1] - '0';
 
-      int end_of_question = line.find('?');
-      current_question.question_text = line.substr(1, end_of_question);
+        current_question.question_text = line.substr(2, line.size());
 
-      char right_answer;
+        this->questions->push_back(current_question);
 
-      // get the question type
-      // switch (current_question.type)
-      // {
-      // case '1':
-      //   break;
-      // case '2':
-      //   break;
-      // case '3':
-      //   break;
+        // get the question type
+        // switch (current_question.type)
+        // {
+        // case '1':
+        //   break;
+        // case '2':
+        //   break;
+        // case '3':
+        //   break;
 
-      // default:
-      //   break;
-      // }
+        // default:
+        //   break;
+        // }
+      }
 
-      this->questions->push_back(current_question);
+      else if (is_answer)
+      {
+        string answer = line.substr(1, line.size() - 2);
+        Question current_question = this->questions->back();
+        current_question.answers.push_back(answer);
+      }
     }
   }
 }

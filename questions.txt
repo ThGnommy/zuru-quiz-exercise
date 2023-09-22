@@ -1,2 +1,7 @@
-1This is a question?[True!][False]
-2This is a multi question?[A. risposta 1!][B. risposta 2][C. risposta 3]
+Q1This is a question?
+[A. True]
+[B. False]
+Q2This is a multi question?
+[A. risposta 1]
+[B. risposta 2]
+[C. risposta 3]
