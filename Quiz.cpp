@@ -26,7 +26,6 @@ void Quiz::CreateQuestions()
 
       char right_answer;
 
-      // get the question type
       // switch (current_question.type)
       // {
       // case '1':
