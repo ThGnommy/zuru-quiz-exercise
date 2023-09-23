@@ -4,7 +4,7 @@ using std::shuffle;
 #include <random>
 #include "Quiz.h"
 
-void Quiz::CreateQuestions(std::vector<Question> questions)
+void Quiz::CreateQuestionList(std::vector<Question> questions)
 {
   this->questions->insert(this->questions->end(), questions.begin(), questions.end());
 }
@@ -14,9 +14,14 @@ void Quiz::ShuffleQuestions()
   shuffle(this->questions->begin(), this->questions->end(), std::random_device());
 }
 
+int Quiz::GetQuestionListSize()
+{
+  vector<Question> question_list = *(this->questions);
+  return question_list.size();
+}
+
 void Quiz::AskQuestions()
 {
-
   vector<Question> question_list = *(this->questions);
   for (auto question : question_list)
   {

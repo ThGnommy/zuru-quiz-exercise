@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Question.h"
-#include <vector>
-using std::vector;
 
 class Quiz
 {
@@ -15,7 +13,11 @@ public:
   int score = 0;
 
   void ShuffleQuestions();
-  void CreateQuestions(std::vector<Question> questions);
+  void CreateQuestionList(std::vector<Question> questions);
   void AskQuestions();
+
+  // utility
+  int GetQuestionListSize();
+
   ~Quiz();
 };
