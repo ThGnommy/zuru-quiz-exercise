@@ -15,6 +15,5 @@ public:
 
   int score = 0;
   void CreateQuestions();
-  // void AskQuestion();
   ~Quiz();
 };

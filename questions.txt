@@ -1,2 +1,2 @@
-1This is a question?[True!][False]
-2This is a multi question?[A. risposta 1!][B. risposta 2][C. risposta 3]
+1This is a question?0
+2This is a multi question?[A. risposta 1,B. risposta 2,C. risposta 3]2

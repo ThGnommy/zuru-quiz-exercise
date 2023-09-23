@@ -15,14 +15,19 @@ int main()
 
   vector<Question> question_list = *(quiz.questions);
 
-  for (auto q : question_list)
-  {
-    std::cout << q.question_text << " " << q.type << "\n";
-  }
+  std::cout << "--------------------------\n";
+  std::cout << "Welcome to the Quiz!\n";
+  std::cout << "--------------------------\n\n";
+  std::cout << "Press 1 if you want to start the Quiz, or press 2 to enter the Edit mode.\n";
 
-  std::cout << question_list.size() << "\n";
+  char choose;
 
-  return 0;
+  std::cin >> choose;
+
+  if (choose == '1')
+    // quiz.startQuiz();
+
+    return 0;
 }
 
 /*
