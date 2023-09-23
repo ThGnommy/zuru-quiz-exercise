@@ -7,27 +7,37 @@
 
 using namespace std;
 
+enum class Type
+{
+  truefalse = 1, // true - false
+  multi,         // A - B - C
+  open           // search in the input string if it includes a specific word
+};
+
 int main()
 {
   Quiz quiz;
 
-  quiz.CreateQuestions();
+  Question q1("This is a question 1", {"True", "False"}, 0, 1);
+  Question q2("This is a question 2", {"True", "False"}, 0, 1);
+  Question q3("This is a question 3", {"True", "False"}, 0, 1);
+  Question q4("This is a question 4", {"True", "False"}, 0, 1);
+  Question q5("This is a question 5", {"True", "False"}, 0, 1);
 
-  vector<Question> question_list = *(quiz.questions);
+  quiz.CreateQuestions({q1, q2, q3, q4, q5});
+  quiz.ShuffleQuestions();
 
   std::cout << "--------------------------\n";
   std::cout << "Welcome to the Quiz!\n";
   std::cout << "--------------------------\n\n";
-  std::cout << "Press 1 if you want to start the Quiz, or press 2 to enter the Edit mode.\n";
 
-  char choose;
+  quiz.AskQuestions();
 
-  std::cin >> choose;
+  std::cout << "\n--------------------------\n";
+  std::cout << "Great Job! Your score is " << quiz.score << "\n";
+  std::cout << "--------------------------\n\n";
 
-  if (choose == '1')
-    // quiz.startQuiz();
-
-    return 0;
+  return 0;
 }
 
 /*

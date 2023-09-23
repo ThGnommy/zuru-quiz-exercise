@@ -1,55 +1,40 @@
 #include <iostream>
-#include <fstream>
+#include <algorithm>
+using std::shuffle;
+#include <random>
 #include "Quiz.h"
 
-void Quiz::CreateQuestions()
+void Quiz::CreateQuestions(std::vector<Question> questions)
 {
-  std::fstream question_file;
+  this->questions->insert(this->questions->end(), questions.begin(), questions.end());
+}
 
-  int line_count = 0;
+void Quiz::ShuffleQuestions()
+{
+  shuffle(this->questions->begin(), this->questions->end(), std::random_device());
+}
 
-  question_file.open("questions.txt", std::ios::in);
+void Quiz::AskQuestions()
+{
 
-  if (question_file.is_open())
+  vector<Question> question_list = *(this->questions);
+  for (auto question : question_list)
   {
-    string line;
-    while (getline(question_file, line))
+    int user_choice;
+
+    std::cout << question.question_text << "\n";
+
+    for (auto answer : question.answers)
     {
-      Question current_question;
+      std::cout << answer << "\n";
+    }
 
-      // Find the question text
-      int end_of_question = line.find('?');
-      current_question.question_text = line.substr(1, end_of_question);
+    std::cout << "Your choice: ";
+    std::cin >> user_choice;
 
-      // Find the question type
-      current_question.type = (int)line[0] - '0';
-
-      int right_answer;
-
-      switch (current_question.type)
-      {
-      case 1: // true false
-      {
-
-        current_question.answers.push_back("True");
-        current_question.answers.push_back("False");
-
-        right_answer = line[line.size() - 1];
-        current_question.correct_answer = (int)right_answer - '0';
-
-        break;
-      }
-      case 2:
-
-        break;
-      case 3:
-        break;
-
-      default:
-        break;
-      }
-
-      this->questions->push_back(current_question);
+    if (user_choice == question.correct_answer)
+    {
+      this->score += 1;
     }
   }
 }
