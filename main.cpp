@@ -13,8 +13,8 @@ int main()
   bool start_quiz = true;
 
   Question q1("Cats have five legs.", {"True", "False"}, 0, 1);
-  Question q2("This is a question 2", {"True", "False"}, 0, 1);
-  Question q3("This is a question 3", {"True", "False"}, 0, 1);
+  Question q2("This is a question 2?", {"True", "False"}, 0, 1);
+  Question q3("This is a question 3?", {"True", "False"}, 0, 1);
   Question q4("This is a question 4", {"True", "False"}, 0, 1);
   Question q5("This is a question 5", {"True", "False"}, 0, 1);
 
@@ -30,9 +30,9 @@ int main()
 
     quiz.AskQuestions();
 
-    std::cout << "\n--------------------------\n";
-    std::cout << "Great Job! You answered " << quiz.score << " out of " << quiz.GetQuestionListSize() << " questions correctly!\n";
-    std::cout << "--------------------------\n\n";
+    std::cout << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    std::cout << "\n>>>>>>>>> Great Job! You answered " << quiz.score << " out of " << quiz.GetQuestionListSize() << " questions correctly! <<<<<<<<< \n\n";
+    std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n";
 
     char choice;
 

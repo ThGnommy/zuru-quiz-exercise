@@ -23,21 +23,24 @@ int Quiz::GetQuestionListSize()
 void Quiz::AskQuestions()
 {
   vector<Question> question_list = *(this->questions);
-  for (auto question : question_list)
+  for (int i = 0; i < question_list.size(); ++i)
   {
     int user_choice;
 
-    std::cout << question.question_text << "\n";
+    std::cout << "Question " << i + 1 << ".\n";
+    std::cout << "------------\n";
+    std::cout << question_list[i].question_text << "\n";
+    std::cout << "(Insert 0 for True, or 1 for False)\n\n";
 
-    for (auto answer : question.answers)
+    for (auto answer : question_list[i].answers)
     {
       std::cout << answer << "\n";
     }
 
     std::cout << "Your choice: ";
     std::cin >> user_choice;
-
-    if (user_choice == question.correct_answer)
+    std::cout << "\n\n";
+    if (user_choice == question_list[i].correct_answer)
     {
       this->score += 1;
     }
