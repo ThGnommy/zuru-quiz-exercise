@@ -1,24 +1,20 @@
 #include <iostream>
-#include <string>
-#include <vector>
 #include "Quiz.h"
 #include "Question.h"
 
-using namespace std;
-
 int main()
 {
-  Quiz quiz;
-
   bool start_quiz = true;
 
-  Question q1("Cats have five legs.", {"True", "False"}, 0, 1);
-  Question q2("This is a question 2?", {"True", "False"}, 0, 1);
-  Question q3("This is a question 3?", {"True", "False"}, 0, 1);
-  Question q4("This is a question 4", {"True", "False"}, 0, 1);
-  Question q5("This is a question 5", {"True", "False"}, 0, 1);
+  QuestionTrueFalse q1("Cats have four legs, and one tail?", 0);
+  QuestionTrueFalse q2("Elephant can Meow?", 1);
+  QuestionTrueFalse q3("Question 3?", 1);
+  QuestionTrueFalse q4("Question 4?", 1);
+  QuestionTrueFalse q5("Question 5?", 1);
 
-  quiz.CreateQuestionList({q1, q2, q3, q4, q5});
+  Quiz quiz;
+
+  quiz.CreateQuestionList({&q1, &q2, &q3, &q4, &q5});
 
   while (start_quiz)
   {
