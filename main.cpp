@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Quiz.h"
 #include "Question.h"
 
@@ -8,13 +7,11 @@ int main()
 
   QuestionTrueFalse q1("Cats have four legs, and one tail?", 0);
   QuestionTrueFalse q2("Elephant can Meow?", 1);
-  QuestionTrueFalse q3("Question 3?", 1);
-  QuestionTrueFalse q4("Question 4?", 1);
-  QuestionTrueFalse q5("Question 5?", 1);
+  QuestionMulti q3("Question multi?", {"Answ 1", "Answ 2", "Answ 3", "Answ 4"}, {0, 1});
 
   Quiz quiz;
 
-  quiz.CreateQuestionList({&q1, &q2, &q3, &q4, &q5});
+  quiz.CreateQuestionList({&q1, &q2, &q3});
 
   while (start_quiz)
   {
@@ -27,7 +24,7 @@ int main()
     quiz.AskQuestions();
 
     std::cout << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
-    std::cout << "\n>>>>>>>>> Great Job! You answered " << quiz.score << " out of " << quiz.GetQuestionListSize() << " questions correctly! <<<<<<<<< \n\n";
+    std::cout << "\n>>>>>>>>> Great Job! You answered " << quiz.GetScore() << " out of " << quiz.GetQuestionListSize() << " questions correctly! <<<<<<<<< \n\n";
     std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n";
 
     char choice;

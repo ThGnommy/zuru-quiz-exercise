@@ -1,7 +1,9 @@
 #pragma once
 
-#include <variant>
+#include <vector>
+using std::vector;
 #include "Question.h"
+
 class Quiz
 {
 public:
@@ -12,12 +14,15 @@ public:
 
   vector<IQuestion *> *questions = new vector<IQuestion *>;
 
-  int score = 0;
-
   void ShuffleQuestions();
   void CreateQuestionList(std::vector<IQuestion *> questions);
   void AskQuestions();
+  void UpdateScore();
 
   // utility
   int GetQuestionListSize();
+  int GetScore();
+
+private:
+  int score{0};
 };

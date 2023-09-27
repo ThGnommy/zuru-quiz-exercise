@@ -14,10 +14,19 @@ void Quiz::ShuffleQuestions()
   shuffle(questions->begin(), questions->end(), std::random_device());
 }
 
+void Quiz::UpdateScore()
+{
+  score += 1;
+}
+
 int Quiz::GetQuestionListSize()
 {
-  // vector<QuestionTrueFalse> question_list = *(this->questions);
   return questions->size();
+}
+
+int Quiz::GetScore()
+{
+  return score;
 }
 
 void Quiz::AskQuestions()
@@ -31,15 +40,15 @@ void Quiz::AskQuestions()
     std::cout << "------------\n";
     std::cout << question_list[i]->GetQuestionText() << "\n";
     std::cout << "(Insert 0 for True, or 1 for False)\n\n";
-
     question_list[i]->GetAnswers();
 
     std::cout << "Your choice: ";
     std::cin >> user_choice;
     std::cout << "\n\n";
-    if (user_choice == question_list[i]->correct_answer)
+
+    if (user_choice == question_list[i]->m_correct_answers)
     {
-      this->score += 1;
+      UpdateScore();
     }
   }
 }
