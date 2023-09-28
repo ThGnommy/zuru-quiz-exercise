@@ -5,13 +5,13 @@ int main()
 {
   bool start_quiz = true;
 
-  QuestionTrueFalse q1("Cats have four legs, and one tail?", 0);
-  QuestionTrueFalse q2("Elephant can Meow?", 1);
-  QuestionMulti q3("Question multi?", {"Answ 1", "Answ 2", "Answ 3", "Answ 4"}, {0, 1});
-
+  QuestionTrueFalse q1("Cats have four legs, and one tail?", {"B"});
+  QuestionTrueFalse q2("Elephant can Meow?", {"A"});
+  QuestionMulti q3("Question multi?", {"A. Answ 1", "B. Answ 2", "C. Answ 3", "D. Answ 4"}, {"A", "D"});
+  QuestionOpen q4("What is the capital of France?", {"Paris"});
   Quiz quiz;
 
-  quiz.CreateQuestionList({&q1, &q2, &q3});
+  quiz.CreateQuestionList({&q1, &q2, &q3, &q4});
 
   while (start_quiz)
   {
@@ -34,7 +34,13 @@ int main()
     std::cin >> choice;
 
     if (choice != 'y')
+    {
       start_quiz = false;
+    }
+    else if (choice == 'y')
+    {
+      quiz.ResetScore();
+    }
   }
 
   return 0;

@@ -22,6 +22,7 @@ public:
   // utility
   int GetQuestionListSize();
   int GetScore();
+  void ResetScore();
 
 private:
   int score{0};

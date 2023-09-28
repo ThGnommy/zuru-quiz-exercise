@@ -5,6 +5,8 @@
 using std::string;
 #include <array>
 using std::array;
+#include <vector>
+using std::vector;
 
 class IQuestion
 {
@@ -18,9 +20,11 @@ public:
   };
 
   string GetQuestionText();
-  virtual void GetAnswers() = 0;
+  void PrintAnswers();
 
   string m_question_text;
+  vector<string> m_answers;
+  vector<string> m_correct_answers;
 
   Type type = Type::uknown;
 };
@@ -29,49 +33,36 @@ class QuestionTrueFalse : public IQuestion
 {
 
 public:
-  QuestionTrueFalse(string question_text, int correct_answer)
-      : m_correct_answer(correct_answer)
+  QuestionTrueFalse(string question_text, vector<string> correct_answers)
   {
     type = Type::truefalse;
     this->m_question_text = question_text;
+    this->m_correct_answers = correct_answers;
   }
 
-  void GetAnswers() override;
-
-  array<string, 2> m_answers = {"A. True", "B. False"};
-  int m_correct_answer;
+  vector<string> m_answers = {"A. True", "B. False"};
 };
 
 class QuestionMulti : public IQuestion
 {
 
 public:
-  QuestionMulti(string question_text, array<string, 4> answers, array<int, 2> correct_answers)
-      : m_answers(answers),
-        m_correct_answers(correct_answers)
+  QuestionMulti(string question_text, vector<string> answers, vector<string> correct_answers)
   {
     type = Type::multi;
     this->m_question_text = question_text;
+    this->m_answers = answers;
+    this->m_correct_answers = correct_answers;
   }
-
-  void ShuffleAnswers();
-  void GetAnswers() override;
-
-  array<string, 4> m_answers;
-  array<int, 2> m_correct_answers;
 };
 
 class QuestionOpen : public IQuestion
 {
 public:
-  QuestionOpen(string question_text, string answer)
-      : question_text(question_text),
-        answer(answer)
+  QuestionOpen(string question_text, vector<string> correct_answers)
   {
     type = Type::open;
     this->m_question_text = question_text;
+    this->m_correct_answers = correct_answers;
   }
-
-  string question_text;
-  string answer;
 };
