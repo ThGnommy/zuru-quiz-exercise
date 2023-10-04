@@ -1,7 +1,6 @@
-Q1This is a question?
-[A. True]
-[B. False]
-Q2This is a multi question?
-[A. risposta 1]
-[B. risposta 2]
-[C. risposta 3]
+2-In which of these country English is the main language?|A. United Kingdom_B. France_C. New Zealand_D. Italy$AC
+1-Cats have four legs and one tail?|TRUE
+1-Can pigs fly?|FALSE
+3-What is the capital of France?|PARIS
+3-How many stars and stripes are on the US flag?|50
+domandarisposta

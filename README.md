@@ -20,3 +20,15 @@ Realizzare un quiz da linea di comando e mantenerlo nel tempo, aggiornandolo e r
 
 - possibilità di aggiungere facilmente e in maniera non invasiva nuovi tipi di domande
 - possibilità di aggiungere facilmente e in maniera non invasiva nuove domande
+
+### To-Do List
+
+Scalability
+
+- [] In function ParseQuestion better handle of the question type
+- [] Handle the static_cast in _Quiz::CreateQuestionList()_ (put it into a different function)
+
+Edit mode
+
+- [] Add a question
+- [] Delete a question

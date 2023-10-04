@@ -1,45 +1,49 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
 #include "Quiz.h"
 #include "Question.h"
 
-using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
   Quiz quiz;
 
-  quiz.CreateQuestions();
+  if (strcmp(argv[1], "edit") == 0)
+  {
+    quiz.EditMode();
+    return 0;
+  }
 
-  vector<Question> question_list = *(quiz.questions);
+  bool start_quiz = true;
 
-  std::cout << question_list[0].question_text << std::endl;
-  std::cout << question_list[0].answers.size() << std::endl;
+  quiz.CreateQuestionList();
 
-  // for (auto q : question_list)
-  // {
-  //   std::cout << q.question_text << " " << q.type << std::endl;
-  //   for (auto a : q.answers)
-  //   {
-  //     std::cout << a << std::endl;
-  //   }
-  // }
+  while (start_quiz)
+  {
+    quiz.ShuffleQuestions();
+
+    std::cout << "--------------------------\n";
+    std::cout << "Welcome to the Quiz!\n";
+    std::cout << "--------------------------\n\n";
+
+    quiz.AskQuestions();
+
+    std::cout << "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    std::cout << "\n>>>>>>>>> Great Job! You have a score of " << quiz.GetScore() << " points! <<<<<<<<< \n\n";
+    std::cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n";
+
+    char choice;
+
+    std::cout << "Do you want to retry?\n";
+    std::cout << "Insert 'y' to retry or another key to exit: ";
+    std::cin >> choice;
+
+    if (choice != 'y')
+    {
+      start_quiz = false;
+    }
+    else if (choice == 'y')
+    {
+      quiz.ResetScore();
+    }
+  }
 
   return 0;
 }
-
-/*
-
-Flow Quiz
-Welcome to the quiz!
-Press 1 to start the quiz or 2 to edit the questions
-
-press 1 (start the quiz)
-if there are 0 questions, return an error and exit.
-shuffle() all the questions
-in a while loop show the questions
-when finish display the score, then ask the user if he/she want retry or exit the program.
-
-*/

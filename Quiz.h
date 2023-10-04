@@ -1,20 +1,28 @@
 #pragma once
 
-#include "Question.h"
 #include <vector>
-using std::vector;
+#include "Question.h"
 
 class Quiz
 {
 public:
   Quiz() = default;
+  Quiz(const Quiz &other) = delete;
   Quiz &operator=(const Quiz &other) = delete;
-
-  bool edit_mode = false;
-  vector<Question> *questions = new vector<Question>;
-
-  int score = 0;
-  void CreateQuestions();
-  // void AskQuestion();
   ~Quiz();
+
+  std::vector<IQuestion *> questions;
+
+  void ShuffleQuestions();
+  void CreateQuestionList();
+  void AskQuestions();
+  void UpdateScore();
+  void EditMode();
+
+  // utility
+
+  int GetScore() const;
+  void ResetScore();
+
+  inline static int score = 0;
 };
